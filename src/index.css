@@ -1,17 +1,45 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #333; /* Set a neutral text color */
+  background-color: #f9fafb; /* Light background for better readability */
+  line-height: 1.6; /* Improve text readability */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background: #f4f4f4; /* Subtle background for code elements */
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: #d6336c; /* Add a bit of color for syntax highlighting */
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0; /* Ensure all elements start without padding */
+}
+
+a {
+  color: #007bff; /* Add a default link color */
+  text-decoration: none; /* Remove underline for modern aesthetics */
+}
+
+a:hover {
+  text-decoration: underline; /* Add underline back on hover for accessibility */
+}
+
+button {
+  font-family: inherit; /* Match the button font to the page */
+  border: none;
+  cursor: pointer;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Reset list styling */
 }
