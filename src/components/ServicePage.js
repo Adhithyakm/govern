@@ -48,14 +48,36 @@ const ServicePage = ({ title, description, categories, officialWebsite, serviceT
     }
   };
 
-  const handleComplaintSubmit = (e) => {
+  const handleComplaintSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setShowComplaintForm(false);
-      setSubmitted(false);
-      setComplaint({ category: '', description: '' });
-    }, 2000);
+    try {
+      const response = await fetch('http://localhost:5000/api/complaints', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...complaint,
+          serviceType: serviceType
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setShowComplaintForm(false);
+          setSubmitted(false);
+          setComplaint({ category: '', description: '' });
+        }, 2000);
+      } else {
+        alert('Failed to submit complaint. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting complaint:', error);
+      alert('Failed to submit complaint. Please try again.');
+    }
   };
 
   return (

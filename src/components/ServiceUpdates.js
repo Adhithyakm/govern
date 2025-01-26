@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { CircularProgress, Alert, TextField, Button, Paper } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import './ServiceUpdates.css';
 
 const ServiceUpdates = ({ serviceType }) => {
   const [updates, setUpdates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [complaint, setComplaint] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    description: ''
-  });
-  const [showComplaintForm, setShowComplaintForm] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
 
   const getUpdateUrl = () => {
     switch (serviceType) {
@@ -62,7 +52,7 @@ const ServiceUpdates = ({ serviceType }) => {
     };
 
     fetchUpdates();
-  }, [serviceType]);
+  }, );
 
   const processUpdates = (data, type) => {
     // This would normally process the actual API response
@@ -125,23 +115,13 @@ const ServiceUpdates = ({ serviceType }) => {
     }
   };
 
-  const handleComplaintSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitStatus({ type: 'info', message: 'Submitting complaint...' });
+  // const handleComplaintSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setSubmitStatus({ type: 'info', message: 'Submitting complaint...' });
 
-    // Simulate API call
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus({ type: 'success', message: 'Complaint submitted successfully! We will get back to you soon.' });
-      setComplaint({ name: '', email: '', subject: '', description: '' });
-      setTimeout(() => {
-        setShowComplaintForm(false);
-        setSubmitStatus(null);
-      }, 3000);
-    } catch (err) {
-      setSubmitStatus({ type: 'error', message: 'Failed to submit complaint. Please try again.' });
-    }
-  };
+  //   // Simulate API call
+    
+  // };
 
   return (
     <div className="service-updates">
@@ -202,92 +182,7 @@ const ServiceUpdates = ({ serviceType }) => {
             </motion.div>
           ))}
         </motion.div>
-      )}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        style={{ marginTop: '2rem' }}
-      >
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setShowComplaintForm(!showComplaintForm)}
-          style={{ marginBottom: '1rem' }}
-        >
-          {showComplaintForm ? 'Hide Complaint Form' : 'Register Complaint'}
-        </Button>
-
-        {showComplaintForm && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Paper elevation={3} style={{ padding: '2rem', marginTop: '1rem' }}>
-              <form onSubmit={handleComplaintSubmit}>
-                <TextField
-                  fullWidth
-                  label="Name"
-                  value={complaint.name}
-                  onChange={(e) => setComplaint({ ...complaint, name: e.target.value })}
-                  margin="normal"
-                  required
-                />
-                <TextField
-                  fullWidth
-                  label="Email"
-                  type="email"
-                  value={complaint.email}
-                  onChange={(e) => setComplaint({ ...complaint, email: e.target.value })}
-                  margin="normal"
-                  required
-                />
-                <TextField
-                  fullWidth
-                  label="Subject"
-                  value={complaint.subject}
-                  onChange={(e) => setComplaint({ ...complaint, subject: e.target.value })}
-                  margin="normal"
-                  required
-                />
-                <TextField
-                  fullWidth
-                  label="Description"
-                  multiline
-                  rows={4}
-                  value={complaint.description}
-                  onChange={(e) => setComplaint({ ...complaint, description: e.target.value })}
-                  margin="normal"
-                  required
-                />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  endIcon={<SendIcon />}
-                  style={{ marginTop: '1rem' }}
-                >
-                  Submit Complaint
-                </Button>
-              </form>
-            </Paper>
-          </motion.div>
-        )}
-
-        {submitStatus && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-          >
-            <Alert severity={submitStatus.type} style={{ marginTop: '1rem' }}>
-              {submitStatus.message}
-            </Alert>
-          </motion.div>
-        )}
-      </motion.div>
+      )} 
     </div>
   );
 };
