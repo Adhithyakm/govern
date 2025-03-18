@@ -1,42 +1,31 @@
+/* App.css */
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f9fafb;
-  color: #333;
-  animation: fadeIn 1s ease;
 }
 
 .app-header {
-  background: linear-gradient(135deg, #1e3a8a 0%, #0d47a1 100%);
-  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+  padding: 1rem 2rem;
   color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  animation: slideDown 1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
   text-decoration: none;
   color: white;
-  font-weight: bold;
 }
 
 .logo h1 {
   margin: 0;
-  font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 1px;
+  font-size: 1.8rem;
 }
 
 .main-content {
   flex: 1;
-  padding: 3rem 2rem;
+  padding: 2rem;
   background-color: #f5f5f5;
-  animation: fadeIn 1s ease;
 }
 
 .services-grid {
@@ -45,7 +34,6 @@
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
 }
 
 .service-link {
@@ -54,103 +42,40 @@
 }
 
 .service-card {
-  background: rgba(255, 255, 255, 0.3);
+  background: white;
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 1s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .service-icon {
-  font-size: 4rem;
-  color: #1e3a8a;
+  font-size: 3rem;
   margin-bottom: 1rem;
-  animation: scaleUp 1s ease;
 }
 
 .service-card h2 {
   margin: 0.5rem 0;
-  font-size: 1.5rem;
   color: #1a237e;
-  font-weight: 600;
 }
 
 .service-card p {
   margin: 0;
   color: #666;
-  line-height: 1.8;
-  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .app-footer {
-  background: rgba(30, 58, 138, 0.8);
+  background: #1a237e;
   color: white;
   text-align: center;
-  padding: 1.5rem 2rem;
+  padding: 1rem;
   margin-top: auto;
-  font-size: 0.95rem;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes scaleUp {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 /* Responsive Design */
@@ -161,20 +86,10 @@
   }
 
   .app-header {
-    flex-direction: column;
-    align-items: center;
     padding: 1rem;
   }
 
   .logo h1 {
-    font-size: 1.8rem;
-  }
-
-  .service-card {
-    padding: 1.5rem;
-  }
-
-  .service-icon {
-    font-size: 3.5rem;
+    font-size: 1.5rem;
   }
 }
